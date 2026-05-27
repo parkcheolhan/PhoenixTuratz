@@ -227,12 +227,83 @@
             display: none; white-space: pre-line; box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             line-height: 1.5;
         }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h2 {
+                font-size: 18px;
+                margin-bottom: 5px;
+            }
+            p {
+                font-size: 12px;
+                margin-top: 0;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .search-container {
+                width: 95vw;
+                margin-bottom: 10px;
+            }
+            .search-container input {
+                flex: 1;
+                width: auto;
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+            .search-container button {
+                padding: 6px 14px;
+                font-size: 14px;
+            }
+            .main-container {
+                flex-direction: column; /* 세로 배치로 전환 */
+                width: 95vw;
+                height: auto;
+                gap: 10px;
+            }
+            .map-container {
+                height: 45vh; /* 화면의 45%를 지도 영역으로 설정 */
+                width: 100%;
+            }
+            .right-panel {
+                height: 50vh; /* 화면의 50%를 정보창 영역으로 설정 */
+                min-width: 0; /* 기존 340px 고정 해제 */
+                width: 100%;
+            }
+            .main-tab-btn {
+                padding: 10px 4px;
+                font-size: 12px;
+            }
+            .main-tab-content {
+                padding: 10px;
+            }
+            .sub-tabs, .survival-tabs {
+                margin-bottom: 10px;
+            }
+            .sub-tab-btn, .survival-tab-btn {
+                min-width: 50px;
+                padding: 6px 2px;
+                font-size: 11px;
+            }
+            .mission-table {
+                font-size: 12px;
+            }
+            .mission-table th, .mission-table td {
+                padding: 8px 6px;
+            }
+            #custom-tooltip {
+                font-size: 12px;
+                padding: 6px 10px;
+                max-width: 80vw;
+            }
+        }
     </style>
 </head>
 <body>
 
     <h2>🏯 길드전 습격전 배치도</h2>
-    <p>바닥 또는 기지에 마우스를 올리면 즉시 좌표 정보가 표시됩니다.</p>
+    <p>바닥 또는 기지에 마우스를 올리거나 터치하면 즉시 좌표 정보가 표시됩니다.</p>
 
 	<div class="search-container">
         <input type="text" id="searchInput" placeholder="영주 이름 검색 (예: 영주 15)" onkeypress="if(event.key === 'Enter') searchPlayer()">
@@ -449,12 +520,13 @@
     <div id="custom-tooltip"></div>
 
     <script>
-	    //중앙좌표 입력부분 (98번째 성당이 X: 553, Y: 509에 오도록 설정 보정)
+	    
         const MAP_CENTER_X = 573;
         const MAP_CENTER_Y = 516;
 		
+		
 		//todo 샘플 데이터. JSON 데이터 파싱 후 처리 예정. feat 수아수아
-const rawData = [
+		const rawData = [
 			{"오동통한라면": 33294},
 			{"이놈봐라": 24950},
 			{"저놈봐라": 25232},
@@ -568,7 +640,7 @@ const rawData = [
         const mapContainer = document.getElementById('map-container');
         const tooltip = document.getElementById('custom-tooltip');
         
-        const GRID_SIZE = 65; // 확장을 고려하여 맵 크기 증가
+        const GRID_SIZE = 65; 
         const CENTER_GRID = Math.floor(GRID_SIZE / 2) + 1; 
 
         for (let y = 1; y <= GRID_SIZE; y++) {
@@ -624,35 +696,31 @@ const rawData = [
             let isEvent = (currentSlotRank === 19 || currentSlotRank === 28);
             let currentRank = isEvent ? null : (playerIndex + 1);
 
-            // 특수 예외 배치 체크 (성당 랭킹 기준)
             if (!isEvent) {
                 const player = players[playerIndex];
                 if (!player) break;
 
                 if (currentRank === 99) {
-                    // 99번째 성당은 89번째 성당의 오른쪽
                     const pos89 = cathedralPositions[89];
                     if (pos89) {
                         finalPos.x = pos89.x + 1;
                         finalPos.y = pos89.y;
                     }
                 } else if (currentRank === 100) {
-                    // 100번째 성당은 88번째 성당의 오른쪽
                     const pos88 = cathedralPositions[88];
                     if (pos88) {
                         finalPos.x = pos88.x + 1;
                         finalPos.y = pos88.y;
                     }
                 }
-                // 위치 저장하기
                 cathedralPositions[currentRank] = finalPos;
             }
 
-			const startX = (CENTER_GRID - 1) + (finalPos.x * STRIDE); // [pos.x] -> [finalPos.x]
-			const startY = (CENTER_GRID - 1) - (finalPos.y * STRIDE); // [pos.y] -> [finalPos.y] 로 바꾸고 [+]를 [-]로 수정
+            const startX = (CENTER_GRID - 1) + (pos.x * STRIDE);
+			const startY = (CENTER_GRID - 1) + (pos.y * STRIDE);
 
-			const baseCenterX = MAP_CENTER_X + (finalPos.x * STRIDE);
-			const baseCenterY = MAP_CENTER_Y + (finalPos.y * STRIDE); // [pos.y] -> [finalPos.y] 로 바꾸고 [-]를 [+]로 수정
+            const baseCenterX = MAP_CENTER_X + (finalPos.x * STRIDE);
+            const baseCenterY = MAP_CENTER_Y - (pos.y * STRIDE);
 
             const baseEl = document.createElement('div');
             baseEl.className = 'base';
@@ -736,7 +804,7 @@ const rawData = [
             if (matchedBases.length > 0) {
                 const firstTarget = matchedBases[0];
                 const targetLeft = firstTarget.offsetLeft - (mapContainer.offsetWidth / 2) + (firstTarget.offsetWidth / 2);
-                const targetTop = firstTarget.offsetTop - (mapContainer.offsetHeight / 2) + (firstTarget.offsetHeight / 2);
+                const targetTop = firstTarget.offsetTop - (mapContainer.offsetHeight / 2) + (firstTarget.offsetWidth / 2);
 
                 mapContainer.scrollTo({
                     left: targetLeft,
@@ -762,6 +830,15 @@ const rawData = [
                 btn.classList.toggle('active', i === index);
             });
             document.querySelectorAll('.sub-tab-content').forEach((content, i) => {
+                content.classList.toggle('active', i === index);
+            });
+        }
+
+        function switchSurvivalTab(index) {
+            document.querySelectorAll('.survival-tab-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+            document.querySelectorAll('.survival-tab-content').forEach((content, i) => {
                 content.classList.toggle('active', i === index);
             });
         }
