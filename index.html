@@ -74,8 +74,8 @@
         }
         #game-board {
             display: grid;
-            grid-template-columns: repeat(55, 25px);
-            grid-template-rows: repeat(55, 25px);
+            grid-template-columns: repeat(65, 25px);
+            grid-template-rows: repeat(65, 25px);
             width: max-content;
             background-image: 
                 linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
@@ -204,7 +204,7 @@
             padding: 10px;
             text-align: left;
         }
-        .mission-table th { background-color: #1a1a1a; color: #ff9800; text-align: center; }
+        .mission-table th { background-color: #1a1a1a; color: #ff9800; }
         .mission-table tr:nth-child(even) { background-color: #333; }
 		
         .right-panel {
@@ -238,13 +238,12 @@
         <input type="text" id="searchInput" placeholder="영주 이름 검색 (예: 영주 15)" onkeypress="if(event.key === 'Enter') searchPlayer()">
         <button onclick="searchPlayer()">검색</button>
     </div>
+<div class="main-container">
+    <div class="map-container" id="map-container">
+        <div id="game-board"></div>
+    </div>
 
-    <div class="main-container">
-        <div class="map-container" id="map-container">
-            <div id="game-board"></div>
-        </div>
-
-        <div class="right-panel">
+	<div class="right-panel">
             <div class="main-tabs">
                 <button class="main-tab-btn active" onclick="switchMainTab(0)">길드전</button>
                 <button class="main-tab-btn" onclick="switchMainTab(1)">서바이벌배틀</button>
@@ -321,7 +320,7 @@
                     </table>
                 </div>
 
-                <div id="sub-content-4" class="sub-tab-content">
+				<div id="sub-content-4" class="sub-tab-content">
                     <table class="mission-table">
                         <thead><tr><th>금요일 행동 목표 목록</th></tr></thead>
                         <tbody>
@@ -356,7 +355,7 @@
                 </div>
             </div>
 
-            <div id="main-content-1" class="main-tab-content">
+			<div id="main-content-1" class="main-tab-content">
                 <h3>☠️ 서바이벌 배틀 정보</h3>
                 
                 <div class="survival-tabs">
@@ -396,62 +395,71 @@
             </div>
 
             <div id="main-content-2" class="main-tab-content">
-                <h3>🏛️ 성당 레벨 해제 조건 <span style="font-size:12px; color:#aaa; font-weight:normal;">(정리: 108_플로라)</span></h3>
-                <table class="mission-table">
-                    <thead>
-                        <tr>
-                            <th>성당 레벨</th>
-                            <th>조건 1</th>
-                            <th>조건 2</th>
-                            <th>조건 3</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>성당 1</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>성당 2</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>성당 3</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>성당 4</td><td>목재 창고 1</td><td>식량 창고 1</td><td>약재 창고 1</td></tr>
-                        <tr><td>성당 5</td><td>성벽 3</td><td>-</td><td>-</td></tr>
-                        <tr><td>성당 6</td><td>성벽 5</td><td>-</td><td>-</td></tr>
-                        <tr><td>성당 7</td><td>훈련장 4</td><td>길드 연락소 3</td><td>-</td></tr>
-                        <tr><td>성당 8</td><td>훈련장 6</td><td>길드 연락소 5</td><td>-</td></tr>
-                        <tr><td>성당 9</td><td>성벽 8</td><td>길드 연락소 7</td><td>-</td></tr>
-                        <tr><td>성당 10</td><td>성벽 9</td><td>병원 7</td><td>-</td></tr>
-                        <tr><td>성당 11</td><td>연구소 7</td><td>훈련장 10</td><td>-</td></tr>
-                        <tr><td>성당 12</td><td>연구소 11</td><td>성벽 10</td><td>항독소 작업장 7</td></tr>
-                        <tr><td>성당 13</td><td>연구소 12</td><td>길드 연락소 11</td><td>농장 7</td></tr>
-                        <tr><td>성당 14</td><td>연구소 13</td><td>전사 석상 12</td><td>벌목장 7</td></tr>
-                        <tr><td>성당 15</td><td>연구소 14</td><td>훈련장 14</td><td>약초원 7</td></tr>
-                        <tr><td>성당 16</td><td>연구소 15</td><td>전사 석상 14</td><td>식량 창고 7</td></tr>
-                        <tr><td>성당 17</td><td>연구소 16</td><td>병영 15</td><td>목재 창고 7</td></tr>
-                        <tr><td>성당 18</td><td>연구소 17</td><td>훈련장 17</td><td>약재 창고 7</td></tr>
-                        <tr><td>성당 19</td><td>연구소 18</td><td>전사 석상 17</td><td>항독소 작업장 10</td></tr>
-                        <tr><td>성당 20</td><td>연구소 19</td><td>길드 연락소 18</td><td>농장 10</td></tr>
-                        <tr><td>성당 21</td><td>연구소 20</td><td>훈련장 20</td><td>벌목장 10</td></tr>
-                        <tr><td>성당 22</td><td>연구소 21</td><td>전사 석상 21</td><td>약초원 10</td></tr>
-                        <tr><td>성당 23</td><td>연구소 22</td><td>병원 22</td><td>식량 창고 10</td></tr>
-                        <tr><td>성당 24</td><td>연구소 23</td><td>성벽 23</td><td>목재 창고 10</td></tr>
-                        <tr><td>성당 25</td><td>연구소 24</td><td>훈련장 24</td><td>약재 창고 10</td></tr>
-                        <tr><td>성당 26</td><td>연구소 25</td><td>전사 석상 25</td><td>항독소 작업장 13</td></tr>
-                        <tr><td>성당 27</td><td>연구소 26</td><td>훈련장 26</td><td>농장 13</td></tr>
-                        <tr><td>성당 28</td><td>연구소 27</td><td>병영 27</td><td>벌목장 13</td></tr>
-                        <tr><td>성당 29</td><td>연구소 28</td><td>길드 연락소 28</td><td>약초원 13</td></tr>
-                        <tr><td>성당 30</td><td>연구소 29</td><td>훈련장 29</td><td>항독소 작업장 15</td></tr>
-                    </tbody>
-                </table>
+                <h3>🏛️ 성당 업그레이드 조건 (정리: 108_플로라)</h3>
+                <div style="overflow-x:auto;">
+                    <table class="mission-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 20%;">성당 레벨</th>
+                                <th style="width: 26%;">조건 1</th>
+                                <th style="width: 27%;">조건 2</th>
+                                <th style="width: 27%;">조건 3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>성당 1</td><td>-</td><td>-</td><td>-</td></tr>
+                            <tr><td>성당 2</td><td>-</td><td>-</td><td>-</td></tr>
+                            <tr><td>성당 3</td><td>-</td><td>-</td><td>-</td></tr>
+                            <tr><td>성당 4</td><td>목재 창고 1</td><td>식량 창고 1</td><td>약재 창고 1</td></tr>
+                            <tr><td>성당 5</td><td>성벽 3</td><td>-</td><td>-</td></tr>
+                            <tr><td>성당 6</td><td>성벽 5</td><td>-</td><td>-</td></tr>
+                            <tr><td>성당 7</td><td>훈련장 4</td><td>길드 연락소 3</td><td>-</td></tr>
+                            <tr><td>성당 8</td><td>훈련장 6</td><td>길드 연락소 5</td><td>-</td></tr>
+                            <tr><td>성당 9</td><td>성벽 8</td><td>길드 연락소 7</td><td>-</td></tr>
+                            <tr><td>성당 10</td><td>성벽 9</td><td>병원 7</td><td>-</td></tr>
+                            <tr><td>성당 11</td><td>연구소 7</td><td>훈련장 10</td><td>-</td></tr>
+                            <tr><td>성당 12</td><td>연구소 11</td><td>성벽 10</td><td>항독소 작업장 7</td></tr>
+                            <tr><td>성당 13</td><td>연구소 12</td><td>길드 연락소 11</td><td>농장 7</td></tr>
+                            <tr><td>성당 14</td><td>연구소 13</td><td>전사 석상 12</td><td>벌목장 7</td></tr>
+                            <tr><td>성당 15</td><td>연구소 14</td><td>훈련장 14</td><td>약초원 7</td></tr>
+                            <tr><td>성당 16</td><td>연구소 15</td><td>전사 석상 14</td><td>식량 창고 7</td></tr>
+                            <tr><td>성당 17</td><td>연구소 16</td><td>병영 15</td><td>목재 창고 7</td></tr>
+                            <tr><td>성당 18</td><td>연구소 17</td><td>훈련장 17</td><td>약초 창고 7</td></tr>
+                            <tr><td>성당 19</td><td>연구소 18</td><td>전사 석상 17</td><td>항독소 작업장 10</td></tr>
+                            <tr><td>성당 20</td><td>연구소 19</td><td>길드 연락소 18</td><td>농장 10</td></tr>
+                            <tr><td>성당 21</td><td>연구소 20</td><td>훈련장 20</td><td>벌목장 10</td></tr>
+                            <tr><td>성당 22</td><td>연구소 21</td><td>전사 석상 21</td><td>약초원 10</td></tr>
+                            <tr><td>성당 23</td><td>연구소 22</td><td>병원 22</td><td>식량 창고 10</td></tr>
+                            <tr><td>성당 24</td><td>연구소 23</td><td>성벽 23</td><td>목재 창고 10</td></tr>
+                            <tr><td>성당 25</td><td>연구소 24</td><td>훈련장 24</td><td>약초 창고 10</td></tr>
+                            <tr><td>성당 26</td><td>연구소 25</td><td>전사 석상 25</td><td>항독소 작업장 13</td></tr>
+                            <tr><td>성당 27</td><td>연구소 26</td><td>훈련장 26</td><td>농장 13</td></tr>
+                            <tr><td>성당 28</td><td>연구소 27</td><td>병영 27</td><td>벌목장 13</td></tr>
+                            <tr><td>성당 29</td><td>연구소 28</td><td>길드 연락소 28</td><td>약초원 13</td></tr>
+                            <tr><td>성당 30</td><td>연구소 29</td><td>훈련장 29</td><td>항독소 작업장 15</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+
     </div>
+	</div>
 
     <div id="custom-tooltip"></div>
 
     <script>
-        const MAP_CENTER_X = 500;
-        const MAP_CENTER_Y = 500;
+	    //중앙좌표 입력부분 (98번째 성당이 X: 553, Y: 509에 오도록 설정 보정)
+        const MAP_CENTER_X = 573;
+        const MAP_CENTER_Y = 516;
 		
-		const rawData = [
-			{"오동통한라면": 28980},
-			{"징크스다": 28405},
+		//todo 샘플 데이터. JSON 데이터 파싱 후 처리 예정. feat 수아수아
+const rawData = [
+			{"오동통한라면": 33294},
+			{"이놈봐라": 24950},
+			{"저놈봐라": 25232},
+			{"요놈봐라": 33549},
+			{"징크스다": 29716},
 			{"미니s": 14631},
 			{"지와니": 15858},
 			{"moon1004": 9640},
@@ -484,19 +492,13 @@
 			{"해피~~": 7127},
 			{"구렁텅이": 15607},
 			{"쭈니쭈니암": 10636},
-			{"리아누나": 13555},
 			{"그랜드캐넌": 5723},
 			{"KMSOUTH": 8791},
 			{"라다찡": 10112},
 			{"bluebam": 8642},
-			{"춘달이": 4379},
-			{"DawnDew": 4431},
-			{"초당임률": 10356},
 			{"스패로R": 10686},
-			{"까마귀666": 25923},
 			{"써니s": 19147},
 			{"푸린은음치": 14347},
-			{"나약해때리지마": 30042},
 			{"말리다": 14796},
 			{"Patrick09": 10234},
 			{"일등만기억하는더러운세상": 19456},
@@ -513,7 +515,7 @@
 			{"해프니": 18780},
 			{"Dark두치": 12099},
 			{"퀸나나": 11936},
-			{"은서아": 23751},
+			{"은서아": 27506},
 			{"새콤달콤윤스": 20235},
 			{"윤담스": 16759},
 			{"앞으로구르기": 16336},
@@ -525,7 +527,6 @@
 			{"GOGOGO": 8970},
 			{"잇힝파워": 10608},
 			{"앗튀다": 10504},
-			{"이놈봐라": 19776},
 			{"닥터슈렉": 7377},
 			{"금주1일차": 19869},
 			{"Stormchaser80": 19361},
@@ -534,20 +535,26 @@
 			{"오돌이": 9471},
 			{"금양케미칼": 8492},
 			{"사네살어": 8808},
-			{"천상또리": 22884},
-			{"은월823": 16918},
+			{"아이스핫초코": 16692},
 			{"김낀봉": 14615},
 			{"잠만보언이": 12740},
 			{"옥이쥬": 16167},
 			{"인천택시드라이버": 12926},
 			{"새우깡동갑": 24658},
 			{"하롱꾸": 11866},
-			{"덤디덤": 6439},
 			{"헨젤과그랬대": 9910},
 			{"꼬꼬게": 6936},
 			{"페이시아": 9512},
 			{"이런된장": 10875},
-			{"다정한언니": 15814}
+			{"다정한언니": 15814},
+			{"TBD1": 0},
+			{"TBD2": 0},
+			{"TBD3": 0},
+			{"TBD4": 0},
+			{"TBD5": 0},
+			{"TBD6": 0},
+			{"TBD7": 0},
+			{"TBD8": 0}
 		];
         
         const players = rawData.map(data => {
@@ -561,26 +568,26 @@
         const mapContainer = document.getElementById('map-container');
         const tooltip = document.getElementById('custom-tooltip');
         
-        const GRID_SIZE = 55; 
+        const GRID_SIZE = 65; // 확장을 고려하여 맵 크기 증가
         const CENTER_GRID = Math.floor(GRID_SIZE / 2) + 1; 
 
         for (let y = 1; y <= GRID_SIZE; y++) {
-            for (let x = 1; x <= GRID_SIZE; x++) {
-                const node = document.createElement('div');
-                node.className = 'node';
-                node.style.gridColumn = x;
-                node.style.gridRow = y;
-
-                const calcX = MAP_CENTER_X + (x - CENTER_GRID);
-                const calcY = MAP_CENTER_Y + (y - CENTER_GRID);
-                
-                node.dataset.type = 'node';
-                node.dataset.x = calcX;
-                node.dataset.y = calcY;
-                
-                board.appendChild(node);
-            }
-        }
+			for (let x = 1; x <= GRID_SIZE; x++) {
+				const node = document.createElement('div');
+				node.className = 'node';
+				node.style.gridColumn = x;
+				node.style.gridRow = y;
+		
+				const calcX = MAP_CENTER_X + (x - CENTER_GRID);
+				const calcY = MAP_CENTER_Y - (y - CENTER_GRID); // [+]에서 [-]로 수정
+			
+				node.dataset.type = 'node';
+				node.dataset.x = calcX;
+				node.dataset.y = calcY;
+        
+				board.appendChild(node);
+			}
+		}
 
         const BASE_SIZE = 3;  
         const GAP = 2;        
@@ -603,37 +610,84 @@
             return coords;
         }
 
-        const spiralPositions = getSpiralCoords(players.length);
+        const totalSlots = players.length + 2;
+        const spiralPositions = getSpiralCoords(totalSlots);
 
-        players.forEach((player, index) => {
-            const pos = spiralPositions[index];
+        let playerIndex = 0;
+        const cathedralPositions = {}; // 각 성당의 최종 위치 기록용
 
-            const startX = (CENTER_GRID - 1) + (pos.x * STRIDE);
-            const startY = (CENTER_GRID - 1) + (pos.y * STRIDE);
+        for (let i = 0; i < totalSlots; i++) {
+            const pos = spiralPositions[i];
+            const currentSlotRank = i + 1; 
 
-            const baseCenterX = MAP_CENTER_X + (pos.x * STRIDE);
-            const baseCenterY = MAP_CENTER_Y + (pos.y * STRIDE);
+            let finalPos = { x: pos.x, y: pos.y };
+            let isEvent = (currentSlotRank === 19 || currentSlotRank === 28);
+            let currentRank = isEvent ? null : (playerIndex + 1);
+
+            // 특수 예외 배치 체크 (성당 랭킹 기준)
+            if (!isEvent) {
+                const player = players[playerIndex];
+                if (!player) break;
+
+                if (currentRank === 99) {
+                    // 99번째 성당은 89번째 성당의 오른쪽
+                    const pos89 = cathedralPositions[89];
+                    if (pos89) {
+                        finalPos.x = pos89.x + 1;
+                        finalPos.y = pos89.y;
+                    }
+                } else if (currentRank === 100) {
+                    // 100번째 성당은 88번째 성당의 오른쪽
+                    const pos88 = cathedralPositions[88];
+                    if (pos88) {
+                        finalPos.x = pos88.x + 1;
+                        finalPos.y = pos88.y;
+                    }
+                }
+                // 위치 저장하기
+                cathedralPositions[currentRank] = finalPos;
+            }
+
+			const startX = (CENTER_GRID - 1) + (finalPos.x * STRIDE); // [pos.x] -> [finalPos.x]
+			const startY = (CENTER_GRID - 1) - (finalPos.y * STRIDE); // [pos.y] -> [finalPos.y] 로 바꾸고 [+]를 [-]로 수정
+
+			const baseCenterX = MAP_CENTER_X + (finalPos.x * STRIDE);
+			const baseCenterY = MAP_CENTER_Y + (finalPos.y * STRIDE); // [pos.y] -> [finalPos.y] 로 바꾸고 [-]를 [+]로 수정
 
             const baseEl = document.createElement('div');
             baseEl.className = 'base';
-            
             baseEl.style.gridColumn = `${startX} / span ${BASE_SIZE}`;
             baseEl.style.gridRow = `${startY} / span ${BASE_SIZE}`;
             baseEl.dataset.type = 'base';
-            baseEl.dataset.rank = index + 1;
-            baseEl.dataset.name = player.name;
-            baseEl.dataset.power = player.power;
             baseEl.dataset.cx = baseCenterX;
             baseEl.dataset.cy = baseCenterY;
 
-            baseEl.innerHTML = `
-                <div class="rank-badge">${index + 1}</div>
-                <div class="base-icon">🏯</div>
-                <div class="base-info">${(player.power / 10000).toFixed(0)}만</div>
-            `;
+            if (isEvent) {
+                baseEl.dataset.rank = '이벤트';
+                baseEl.dataset.name = '이벤트 치즈 영역';
+                baseEl.dataset.power = 0;
+
+                baseEl.innerHTML = `
+                    <div class="rank-badge" style="background-color: #ff9800;">🎁</div>
+                    <div class="base-icon">🧀</div>
+                    <div class="base-info">이벤트</div>
+                `;
+            } else {
+                const player = players[playerIndex];
+                baseEl.dataset.rank = currentRank;
+                baseEl.dataset.name = player.name;
+                baseEl.dataset.power = player.power;
+
+                baseEl.innerHTML = `
+                    <div class="rank-badge">${currentRank}</div>
+                    <div class="base-icon">🏯</div>
+                    <div class="base-info">${(player.power / 10000).toFixed(0)}만</div>
+                `;
+                playerIndex++; 
+            }
 
             board.appendChild(baseEl);
-        });
+        }
 
         document.addEventListener('mousemove', (e) => {
             const target = e.target.closest('.node, .base');
@@ -641,8 +695,12 @@
             if (target) {
                 let text = '';
                 if (target.dataset.type === 'base') {
-                    const powerFormatted = Number(target.dataset.power).toLocaleString();
-                    text = `👑 [랭킹 ${target.dataset.rank}위] ${target.dataset.name}\n⚔️ 전투력: ${powerFormatted}\n📍 기지 이전 중앙 좌표: [ X: ${target.dataset.cx}, Y: ${target.dataset.cy} ]`;
+                    if (target.dataset.rank === '이벤트') {
+                        text = `🧀 [이벤트 치즈 영역]\n📍 중앙 좌표: [ X: ${target.dataset.cx}, Y: ${target.dataset.cy} ]`;
+                    } else {
+                        const powerFormatted = Number(target.dataset.power).toLocaleString();
+                        text = `👑 [랭킹 ${target.dataset.rank}위] ${target.dataset.name}\n⚔️ 전투력: ${powerFormatted}\n📍 기지 이전 중앙 좌표: [ X: ${target.dataset.cx}, Y: ${target.dataset.cy} ]`;
+                    }
                 } else if (target.dataset.type === 'node') {
                     text = `🟩 [빈 영토]\n좌표: X: ${target.dataset.x}, Y: ${target.dataset.y}`;
                 }
@@ -656,6 +714,8 @@
             }
         });
 
+
+
         function searchPlayer() {
             const searchInput = document.getElementById('searchInput').value.trim();
             if (!searchInput) return alert("검색할 키워드를 입력해주세요.");
@@ -667,7 +727,7 @@
             allBases.forEach(base => {
                 const nameData = base.dataset.name;
                 
-                if (nameData.includes(searchInput)) {
+                if (nameData && nameData.includes(searchInput)) {
                     base.classList.add('highlight');
                     matchedBases.push(base);
                 }
@@ -706,18 +766,9 @@
             });
         }
 
-        function switchSurvivalTab(index) {
-            document.querySelectorAll('.survival-tab-btn').forEach((btn, i) => {
-                btn.classList.toggle('active', i === index);
-            });
-            document.querySelectorAll('.survival-tab-content').forEach((content, i) => {
-                content.classList.toggle('active', i === index);
-            });
-        }
-
         function autoSelectDayTab() {
-            const currentDay = new Date().getDay();
-            let targetIndex = 0;
+            const currentDay = new Date().getDay(); 
+            let targetIndex = 0; 
 
             if (currentDay === 0) {
                 alert("오늘은 쉽니다 🛋️");
@@ -728,25 +779,10 @@
             switchSubTab(targetIndex);
         }
 		
-		function autoSelectSurvivalTab() {
-            const now = new Date();
-            const baseTime = new Date();
-            baseTime.setHours(11, 0, 0, 0);
-            
-            const diffMs = now - baseTime;
-            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-            
-            const intervalIndex = Math.floor(diffHours / 4);
-            const survivalIndex = ((intervalIndex % 5) + 5) % 5;
-            
-            switchSurvivalTab(survivalIndex);
-        }
-		
         window.onload = () => {
             mapContainer.scrollLeft = (board.offsetWidth - mapContainer.offsetWidth) / 2;
             mapContainer.scrollTop = (board.offsetHeight - mapContainer.offsetHeight) / 2;
 			autoSelectDayTab();
-            autoSelectSurvivalTab();
         };
     </script>
 </body>
