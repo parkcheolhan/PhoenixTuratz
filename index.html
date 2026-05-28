@@ -228,7 +228,7 @@
             line-height: 1.5;
         }
 
-        /* 📱 모바일 및 태블릿 최적화 스타일 추가 */
+        /* 📱 모바일 및 태블릿 최적화 스타일 */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -258,18 +258,18 @@
                 font-size: 14px;
             }
             .main-container {
-                flex-direction: column; /* 세로 배치로 전환 */
+                flex-direction: column;
                 width: 95vw;
                 height: auto;
                 gap: 10px;
             }
             .map-container {
-                height: 45vh; /* 화면의 45%를 지도 영역으로 설정 */
+                height: 45vh;
                 width: 100%;
             }
             .right-panel {
-                height: 50vh; /* 화면의 50%를 정보창 영역으로 설정 */
-                min-width: 0; /* 기존 340px 고정 해제 */
+                height: 50vh;
+                min-width: 0;
                 width: 100%;
             }
             .main-tab-btn {
@@ -521,112 +521,36 @@
     <div id="custom-tooltip"></div>
 
     <script>
-	    //중앙좌표 입력부분 (98번째 성당이 X: 553, Y: 509에 오도록 설정 보정)
-        const MAP_CENTER_X = 573;
-        const MAP_CENTER_Y = 518;
+	    // 중앙좌표 입력부분 (98번째 성당이 X: 553, Y: 509에 오도록 설정 보정값 업데이트)
+        const MAP_CENTER_X = 553;
+        const MAP_CENTER_Y = 429;
 		
-		//todo 샘플 데이터. JSON 데이터 파싱 후 처리 예정. feat 수아수아
-const rawData = [
-			{"오동통한라면": 33294},
-			{"이놈봐라": 24950},
-			{"저놈봐라": 25232},
-			{"요놈봐라": 33549},
-			{"징크스다": 29716},
-			{"미니s": 14631},
-			{"지와니": 15858},
-			{"moon1004": 9640},
-			{"설록스": 16444},
-			{"벨라다": 11060},
-			{"앤빌마": 6615},
-			{"이상희": 7526},
-			{"zxz0": 13098},
-			{"밀투유": 12709},
-			{"알자너": 12626},
-			{"보호트": 9332},
-			{"찐보스": 12242},
-			{"여우여울": 8985},
-			{"크리치오": 11114},
-			{"생각하는중": 15409},
-			{"Kcal": 11612},
-			{"겐사키": 6003},
-			{"아이스핫초코": 15147},
-			{"뭉쭈콩": 12416},
-			{"도도서": 11406},
-			{"JackMior": 9886},
-			{"슬로우하게나아가자": 10303},
-			{"범후~": 6013},
-			{"토실냥이": 14630},
-			{"짱이될래요": 6312},
-			{"행복아": 12097},
-			{"orea": 10665},
-			{"골드·로저": 12011},
-			{"말이많은편은아니에요": 10979},
-			{"해피~~": 7127},
-			{"구렁텅이": 15607},
-			{"쭈니쭈니암": 10636},
-			{"그랜드캐넌": 5723},
-			{"KMSOUTH": 8791},
-			{"라다찡": 10112},
-			{"bluebam": 8642},
-			{"스패로R": 10686},
-			{"써니s": 19147},
-			{"푸린은음치": 14347},
-			{"말리다": 14796},
-			{"Patrick09": 10234},
-			{"일등만기억하는더러운세상": 19456},
-			{"신똘복": 22258},
-			{"삐돌철이": 17557},
-			{"주성이": 10900},
-			{"오께이렛쓰고": 17357},
-			{"사신류크": 10925},
-			{"수아수아": 11840},
-			{"지후파파": 14360},
-			{"언능달리라": 11594},
-			{"공공문은": 10677},
-			{"통통한호박벌": 13209},
-			{"해프니": 18780},
-			{"Dark두치": 12099},
-			{"퀸나나": 11936},
-			{"은서아": 27506},
-			{"새콤달콤윤스": 20235},
-			{"윤담스": 16759},
-			{"앞으로구르기": 16336},
-			{"키키☆": 15046},
-			{"신조협사": 11518},
-			{"호미꽃": 11358},
-			{"고구마왕": 5750},
-			{"츄륩츄륩": 11382},
-			{"GOGOGO": 8970},
-			{"잇힝파워": 10608},
-			{"앗튀다": 10504},
-			{"닥터슈렉": 7377},
-			{"금주1일차": 19869},
-			{"Stormchaser80": 19361},
-			{"창천192": 13177},
-			{"으이익": 11734},
-			{"오돌이": 9471},
-			{"금양케미칼": 8492},
-			{"사네살어": 8808},
-			{"아이스핫초코": 16692},
-			{"김낀봉": 14615},
-			{"잠만보언이": 12740},
-			{"옥이쥬": 16167},
-			{"인천택시드라이버": 12926},
-			{"새우깡동갑": 24658},
-			{"하롱꾸": 11866},
-			{"헨젤과그랬대": 9910},
-			{"꼬꼬게": 6936},
-			{"페이시아": 9512},
-			{"이런된장": 10875},
-			{"다정한언니": 15814},
-			{"TBD1": 0},
-			{"TBD2": 0},
-			{"TBD3": 0},
-			{"TBD4": 0},
-			{"TBD5": 0},
-			{"TBD6": 0},
-			{"TBD7": 0},
-			{"TBD8": 0}
+		// 데이터 원본 유지
+        const rawData = [
+			{"오동통한라면": 33294}, {"이놈봐라": 24950}, {"저놈봐라": 25232}, {"요놈봐라": 33549},
+			{"징크스다": 29716}, {"미니s": 14631}, {"지와니": 15858}, {"moon1004": 9640},
+			{"셜록스": 16444}, {"벨라다": 11060}, {"앤빌마": 6615}, {"이상희": 7526},
+			{"zxz0": 13098}, {"밀투유": 12709}, {"알자너": 12626}, {"보호트": 9332},
+			{"찐보스": 12242}, {"여우여울": 8985}, {"크리치오": 11114}, {"생각하는중": 15409},
+			{"Kcal": 11612}, {"겐사키": 6003}, {"아이스핫초코": 15147}, {"뭉쭈콩": 12416},
+			{"도도서": 11406}, {"JackMior": 9886}, {"슬로우하게나아가자": 10303}, {"범후~": 6013},
+			{"토실냥이": 14630}, {"짱이될래요": 6312}, {"행복아": 12097}, {"orea": 10665},
+			{"골드·로저": 12011}, {"말이많은편은아니에요": 10979}, {"해피~~": 7127}, {"구렁텅이": 15607},
+			{"쭈니쭈니암": 10636}, {"그랜드캐넌": 5723}, {"KMSOUTH": 8791}, {"라다찡": 10112},
+			{"bluebam": 8642}, {"스패로R": 10686}, {"써니s": 19147}, {"푸린은음치": 14347},
+			{"말리다": 14796}, {"Patrick09": 10234}, {"일등만기억하는더러운세상": 19456}, {"신똘복": 22258},
+			{"삐돌철이": 17557}, {"주성이": 10900}, {"오께이렛쓰고": 17357}, {"사신류크": 10925},
+			{"수아수아": 11840}, {"지후파파": 14360}, {"언능달리라": 11594}, {"공공문은": 10677},
+			{"통통한호박벌": 13209}, {"해프니": 18780}, {"Dark두치": 12099}, {"퀸나나": 11936},
+			{"은서아": 27506}, {"새콤달콤윤스": 20235}, {"윤담스": 16759}, {"앞으로구르기": 16336},
+			{"키키☆": 15046}, {"신조협사": 11518}, {"호미꽃": 11358}, {"고구마왕": 5750},
+			{"츄륩츄륩": 11382}, {"GOGOGO": 8970}, {"잇힝파워": 10608}, {"앗튀다": 10504},
+			{"닥터슈렉": 7377}, {"금주1일차": 19869}, {"Stormchaser80": 19361}, {"창천192": 13177},
+			{"으이익": 11734}, {"오들이": 9471}, {"금양케미칼": 8492}, {"사네살어": 8808},
+			{"아이스핫초코": 16692}, {"김낀봉": 14615}, {"잠만보언이": 12740}, {"옥이쥬": 16167},
+			{"인천택시드라이버": 12926}, {"새우깡동갑": 24658}, {"하롱꾸": 11866}, {"헨젤과그랬대": 9910},
+			{"꼬꼬게": 6936}, {"페이시아": 9512}, {"이런된장": 10875}, {"다정한언니": 15814},
+			{"TBD1": 0}, {"TBD2": 0}, {"TBD3": 0}, {"TBD4": 0}, {"TBD5": 0}, {"TBD6": 0}, {"TBD7": 0}, {"TBD8": 0}
 		];
         
         const players = rawData.map(data => {
@@ -640,7 +564,7 @@ const rawData = [
         const mapContainer = document.getElementById('map-container');
         const tooltip = document.getElementById('custom-tooltip');
         
-        const GRID_SIZE = 65; // 확장을 고려하여 맵 크기 증가
+        const GRID_SIZE = 65; 
         const CENTER_GRID = Math.floor(GRID_SIZE / 2) + 1; 
 
         for (let y = 1; y <= GRID_SIZE; y++) {
@@ -651,7 +575,7 @@ const rawData = [
 				node.style.gridRow = y;
 		
 				const calcX = MAP_CENTER_X + (x - CENTER_GRID);
-				const calcY = MAP_CENTER_Y - (y - CENTER_GRID); // [+]에서 [-]로 수정
+				const calcY = MAP_CENTER_Y - (y - CENTER_GRID); 
 			
 				node.dataset.type = 'node';
 				node.dataset.x = calcX;
@@ -662,7 +586,7 @@ const rawData = [
 		}
 
         const BASE_SIZE = 3;  
-        const GAP = 2;        
+        const GAP = 0;        // 💡 2X2 공백을 없애기 위해 GAP을 0으로 수정!
         const STRIDE = BASE_SIZE + GAP; 
 
         function getSpiralCoords(count) {
@@ -686,7 +610,7 @@ const rawData = [
         const spiralPositions = getSpiralCoords(totalSlots);
 
         let playerIndex = 0;
-        const cathedralPositions = {}; // 각 성당의 최종 위치 기록용
+        const cathedralPositions = {}; 
 
         for (let i = 0; i < totalSlots; i++) {
             const pos = spiralPositions[i];
@@ -696,35 +620,31 @@ const rawData = [
             let isEvent = (currentSlotRank === 19 || currentSlotRank === 28);
             let currentRank = isEvent ? null : (playerIndex + 1);
 
-            // 특수 예외 배치 체크 (성당 랭킹 기준)
             if (!isEvent) {
                 const player = players[playerIndex];
                 if (!player) break;
 
                 if (currentRank === 99) {
-                    // 99번째 성당은 89번째 성당의 오른쪽
                     const pos89 = cathedralPositions[89];
                     if (pos89) {
                         finalPos.x = pos89.x + 1;
                         finalPos.y = pos89.y;
                     }
                 } else if (currentRank === 100) {
-                    // 100번째 성당은 88번째 성당의 오른쪽
                     const pos88 = cathedralPositions[88];
                     if (pos88) {
                         finalPos.x = pos88.x + 1;
                         finalPos.y = pos88.y;
                     }
                 }
-                // 위치 저장하기
                 cathedralPositions[currentRank] = finalPos;
             }
 
-			const startX = (CENTER_GRID - 1) + (finalPos.x * STRIDE); // [pos.x] -> [finalPos.x]
-			const startY = (CENTER_GRID - 1) - (finalPos.y * STRIDE); // [pos.y] -> [finalPos.y] 로 바꾸고 [+]를 [-]로 수정
+			const startX = (CENTER_GRID - 1) + (finalPos.x * STRIDE); 
+			const startY = (CENTER_GRID - 1) - (finalPos.y * STRIDE); 
 
 			const baseCenterX = MAP_CENTER_X + (finalPos.x * STRIDE);
-			const baseCenterY = MAP_CENTER_Y + (finalPos.y * STRIDE); // [pos.y] -> [finalPos.y] 로 바꾸고 [-]를 [+]로 수정
+			const baseCenterY = MAP_CENTER_Y + (finalPos.y * STRIDE); 
 
             const baseEl = document.createElement('div');
             baseEl.className = 'base';
@@ -785,8 +705,6 @@ const rawData = [
                 tooltip.style.display = 'none';
             }
         });
-
-
 
         function searchPlayer() {
             const searchInput = document.getElementById('searchInput').value.trim();
